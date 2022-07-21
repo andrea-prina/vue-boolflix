@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SearchBar class="w-50"/>
+    <SearchBar class="w-50" @search="log"/>
   </div>
 </template>
 
@@ -14,6 +14,12 @@ export default {
   name: 'App',
   components: {
     SearchBar,
+  },
+
+  methods : {
+    log : function(string){
+      console.log(string);
+    }
   }
 }
 </script>
