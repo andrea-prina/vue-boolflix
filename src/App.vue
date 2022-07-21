@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+  
   </div>
 </template>
 
@@ -14,6 +14,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+  @import '~bootstrap/scss/bootstrap';
 
 </style>
