@@ -5,7 +5,7 @@
       <li v-for="(movie, index) in movies" :key="index">
         <h4>{{movie.title}}</h4>
         <h5>{{movie.original_title}}</h5>
-        <p>{{movie.original_language}}</p>
+        <img class="language-flag" :src="getLanguageFlag(movie.original_language)" :alt="movie.original_language">
         <p>{{movie.vote_average}}</p>
       </li>
     </ul>
@@ -13,7 +13,7 @@
       <li v-for="(show, index) in tvShows" :key="index">
         <h4>{{show.name}}</h4>
         <h5>{{show.original_name}}</h5>
-        <p>{{show.original_language}}</p>
+        <img class="language-flag" :src="getLanguageFlag(show.original_language)" :alt="show.original_language">
         <p>{{show.vote_average}}</p>
       </li>
     </ul>
@@ -40,9 +40,6 @@ export default {
   },
 
   methods : {
-    log : function(string){
-      console.log(string);
-    },
 
     getMoviesAndShows : function(query){
       // Movies
@@ -56,7 +53,31 @@ export default {
         this.tvShows = result.data.results;
       })
 
-    }
+    },
+
+
+    getLanguageFlag : function(langCode){
+
+      let flagIcon = "";
+
+      switch (langCode){
+        // TODO: Map more languages
+        case 'en' :
+          flagIcon = "gb";
+          break;
+
+        case 'it' :
+          flagIcon = "it";
+          break;
+
+        case 'ja' :
+          flagIcon = "jp";
+          break
+        
+        }
+      
+      return (`https://countryflagsapi.com/png/${flagIcon}`)
+    },
 
   },
 
@@ -79,6 +100,12 @@ export default {
   #tv-shows{
     color: cyan;
   }
+
+  .language-flag {
+    width: 20px;
+  }
+
+
 
 
 </style>
