@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <SearchBar class="w-50" @search="getMoviesAndShows"/>
-    <ul id="movies">
+    <ul class="list-unstyled" id="movies">
       <li v-for="(movie, index) in movies" :key="index">
+        <img :src="'https://image.tmdb.org/t/p/w154'+ movie.poster_path" :alt="movie.title">
         <h4>{{movie.title}}</h4>
         <h5>{{movie.original_title}}</h5>
         <img class="language-flag" :src="getLanguageFlag(movie.original_language)" :alt="movie.original_language">
         <p>{{movie.vote_average}}</p>
       </li>
     </ul>
-    <ul id="tv-shows">
+    <ul class="list-unstyled" id="tv-shows">
       <li v-for="(show, index) in tvShows" :key="index">
+        <img :src="'https://image.tmdb.org/t/p/w154'+ show.poster_path" :alt="movie.title">
         <h4>{{show.name}}</h4>
         <h5>{{show.original_name}}</h5>
         <img class="language-flag" :src="getLanguageFlag(show.original_language)" :alt="show.original_language">
