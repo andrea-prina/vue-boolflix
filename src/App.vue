@@ -12,7 +12,7 @@
     </ul>
     <ul class="list-unstyled" id="tv-shows">
       <li v-for="(show, index) in tvShows" :key="index">
-        <img :src="'https://image.tmdb.org/t/p/w154'+ show.poster_path" :alt="movie.title">
+        <img :src="'https://image.tmdb.org/t/p/w154'+ show.poster_path" :alt="show.title">
         <h4>{{show.name}}</h4>
         <h5>{{show.original_name}}</h5>
         <img class="language-flag" :src="getLanguageFlag(show.original_language)" :alt="show.original_language">
