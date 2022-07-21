@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <SearchBar class="w-50" @search="log"/>
-    <div>{{moviesTitle[1].title}}</div>
+    <SearchBar class="w-50" @search="getMovies"/>
+    <ul>
+      <li v-for="(element, index) in movies" :key="index">
+        <h4>TITLE</h4>
+        <h5>Original title</h5>
+        <p>Language</p>
+        <p>Rating</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,7 +26,7 @@ export default {
 
   data : function(){
     return {
-      moviesTitle : [],
+      movies : [],
     }
   },
 
@@ -31,15 +38,11 @@ export default {
     getMovies : function(query){
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=1f3169b87aab636f5fde0cfa52d8788d&query=${query}`)
       .then((result) => {
-        this.moviesTitle = result.data.results;
-        console.log(result.data.results[1].title);
+        this.movies = result.data.results;
       })
-    }
+    },
   },
 
-  created(){
-    this.getMovies('back');
-  }
 }
 </script>
 
@@ -47,10 +50,10 @@ export default {
 
   @import '~bootstrap/scss/bootstrap';
 
-  #app{
+  body {
     background-color: black;
     color: white;
-    height: 100vh;
   }
+
 
 </style>
