@@ -3,10 +3,10 @@
     <SearchBar class="w-50" @search="getMovies"/>
     <ul>
       <li v-for="(element, index) in movies" :key="index">
-        <h4>TITLE</h4>
-        <h5>Original title</h5>
-        <p>Language</p>
-        <p>Rating</p>
+        <h4>{{element.title}}</h4>
+        <h5>{{element.original_title}}</h5>
+        <p>{{element.original_language}}</p>
+        <p>{{element.vote_average}}</p>
       </li>
     </ul>
   </div>
@@ -39,6 +39,7 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=1f3169b87aab636f5fde0cfa52d8788d&query=${query}`)
       .then((result) => {
         this.movies = result.data.results;
+        console.log(result.data.results);
       })
     },
   },
