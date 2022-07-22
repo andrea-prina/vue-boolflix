@@ -3,8 +3,8 @@
         <img :src="'https://image.tmdb.org/t/p/w154'+ posterSource" :alt="title">
         <h4>{{title}}</h4>
         <h5>{{originalTitle}}</h5>
+        <p>{{refactorVote(averageVote)}}</p>
         <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
-        <p>{{averageVote}}</p>
     </div>
 </template>
 
@@ -46,6 +46,11 @@ export default {
 
             return (`https://countryflagsapi.com/png/${flagIcon}`)
         },
+
+        refactorVote : function(vote){
+            // Change the vote system from 1-10 to 1-5 (rounding up to integers) to display it as stars
+            return Math.ceil(vote / 2);
+        }
     }
 
 }
