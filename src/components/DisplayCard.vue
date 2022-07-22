@@ -5,7 +5,7 @@
 
         <div class="card-info">
             <h4>{{title}}</h4>
-            <p><strong>Original title</strong>: {{originalTitle}}</p>
+            <p v-if="title != originalTitle"><strong>Original title</strong>: {{originalTitle}}</p>
             <p><strong>Rating</strong>: 
                 <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
                 <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
