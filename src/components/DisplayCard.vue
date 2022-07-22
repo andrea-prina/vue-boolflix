@@ -89,6 +89,7 @@ export default {
             // Format for alt text and image when poster is missing
             display: inline-block;
             text-align: center;
+            font-weight: bold;
             background-image: url('../assets/img/miss-image.png');
             background-position: center;
             background-repeat: no-repeat;
@@ -98,10 +99,6 @@ export default {
     .card-info {
         padding: 1rem;
         display: none;
-
-        h4 {
-            font-weight: bold;
-        }
 
         p {
             margin: 0;

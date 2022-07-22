@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <Header @search="getMoviesAndShows"/>
-    <Main :searchedMovies="movies" :searchedTvShows="tvShows"/>
+    <Main
+    :searchedMovies="movies"
+    :checkMovies="foundMovies"
+    :searchedTvShows="tvShows"
+    :checkShows="foundTvShows"
+    :newPage="newPage"/>
 
   </div>
 </template>
@@ -24,6 +29,9 @@ export default {
     return {
       movies : [],
       tvShows : [],
+      foundMovies : false,
+      foundTvShows : false,
+      newPage : true,
       apiKey : "1f3169b87aab636f5fde0cfa52d8788d",
     }
   },
@@ -38,6 +46,12 @@ export default {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.movies = result.data.results;
+          if (this.movies.length > 0){
+            this.foundMovies = true;
+          } else {
+            this.foundMovies = false;
+          }
+          this.newPage = false;
         })
         .catch((err) => {
           console.warn(err);
@@ -46,6 +60,11 @@ export default {
         axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.tvShows = result.data.results;
+          if (this.tvShows.length > 0){
+            this.foundTvShows = true;
+          } else {
+            this.foundTvShows = false;
+          }
         })
         .catch((err) => {
           console.warn(err);

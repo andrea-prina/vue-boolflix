@@ -1,33 +1,41 @@
 <template>
-    <div>
+    <main>
 
         <!-- Create movie cards -->
-        <ul class="list-unstyled d-flex">
-            <li v-for="movie in searchedMovies" :key="movie.id">
-                <DisplayCard
-                :posterSource="movie.poster_path"
-                :title="movie.title"
-                :originalTitle="movie.original_title"
-                :originalLanguage="movie.original_language"
-                :averageVote="movie.vote_average"
-                :overview="movie.overview"/>
-            </li>
-        </ul>
+        <div v-if="checkMovies">
+            <h4>Movies</h4>
+            <ul class="list-unstyled d-flex">
+                <li v-for="movie in searchedMovies" :key="movie.id">
+                    <DisplayCard
+                    :posterSource="movie.poster_path"
+                    :title="movie.title"
+                    :originalTitle="movie.original_title"
+                    :originalLanguage="movie.original_language"
+                    :averageVote="movie.vote_average"
+                    :overview="movie.overview"/>
+                </li>
+            </ul>
+        </div>
 
         <!-- Create tv shows cards -->
-        <ul class="list-unstyled d-flex">
-            <li v-for="show in searchedTvShows" :key="show.id">
-                <DisplayCard
-                :posterSource="show.poster_path"
-                :title="show.name"
-                :originalTitle="show.original_name"
-                :originalLanguage="show.original_language"
-                :averageVote="show.vote_average"
-                :overview="show.overview"/>
-            </li>
-        </ul>
+        <div v-if="checkShows">
+            <h4>TV Shows</h4>
+            <ul class="list-unstyled d-flex">
+                <li v-for="show in searchedTvShows" :key="show.id">
+                    <DisplayCard
+                    :posterSource="show.poster_path"
+                    :title="show.name"
+                    :originalTitle="show.original_name"
+                    :originalLanguage="show.original_language"
+                    :averageVote="show.vote_average"
+                    :overview="show.overview"/>
+                </li>
+            </ul>
+        </div>
 
-    </div>
+        <h4 v-if="!checkMovies && !checkShows && !newPage">We couldn't find anything...</h4>
+
+    </main>
 </template>
 
 <script>
@@ -42,24 +50,36 @@ export default {
     props : {
         searchedMovies : Array,
         searchedTvShows : Array,
+        checkMovies : Boolean,
+        checkShows : Boolean,
+        newPage : Boolean,
     }
 
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+    main {
+        padding: 0 1rem;
+
+        ul {
+            padding-bottom: 3rem;
+            overflow-x: auto;
+    
+            li {
+                margin: 0.2rem;
+            }
+        }
+
+        h4 {
+            font-weight: bold;
+        }
+    }
 
     .language-flag {
         width: 20px;
     }
 
-    ul {
-        padding-bottom: 3rem;
-        overflow-x: auto;
-
-        li {
-            margin: 0.2rem;
-        }
-    }
     
 </style>
