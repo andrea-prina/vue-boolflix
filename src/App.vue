@@ -31,22 +31,27 @@ export default {
   methods : {
 
     getMoviesAndShows : function(query){
-      // Movies
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
-      .then((result) => {
-        this.movies = result.data.results;
-      })
-      .catch((err) => {
-        console.warn(err);
-      })
-      // Shows
-      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
-      .then((result) => {
-        this.tvShows = result.data.results;
-      })
-      .catch((err) => {
-        console.warn(err);
-      })
+
+      if (query != "" || query === null){
+
+        // Movies
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
+        .then((result) => {
+          this.movies = result.data.results;
+        })
+        .catch((err) => {
+          console.warn(err);
+        })
+        // Shows
+        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
+        .then((result) => {
+          this.tvShows = result.data.results;
+        })
+        .catch((err) => {
+          console.warn(err);
+        })
+    
+      }
 
     },
 

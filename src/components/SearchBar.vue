@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input v-model="searchQuery" type="text" placeholder="Search movie or TV series">
+        <input v-model.trim="searchQuery" type="text" placeholder="Search movie or TV series">
         <button @click="$emit('search', searchQuery)"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 </template>
