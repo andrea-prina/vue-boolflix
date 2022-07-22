@@ -1,14 +1,14 @@
 <template>
     <div class="display-card">
-        <img :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
+        <img class="poster-img" :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
         <div class="card-info">
-            <h4>{{title}}</h4>
-            <h5>{{originalTitle}}</h5>
-            <p>
+            <h4><strong>Title</strong>:{{title}}</h4>
+            <h5><strong>Original title</strong>:{{originalTitle}}</h5>
+            <p><strong>Rating</strong>:
                 <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
                 <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
             </p>
-            <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
+            <span><strong>Language </strong></span><img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
         </div>
     </div>
 </template>
@@ -72,12 +72,17 @@ export default {
     .display-card {
         width: 342px;
         height: 514px;
+        border: 0.25px solid rgb(40, 40, 40);
 
-        img {
+        .poster-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: inline-block;
+            text-align: center;
+            background-image: url('../assets/img/miss-image.png');
+            background-position: center;
+            background-repeat: no-repeat;
         }
     }
 
@@ -91,9 +96,13 @@ export default {
             display: inline-block;
         }
 
-        img {
+        .poster-img {
             display: none;
         }
+    }
+
+    .language-flag {
+        height: 1.2rem;
     }
 
 
