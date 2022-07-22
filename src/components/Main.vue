@@ -1,5 +1,7 @@
 <template>
     <div>
+
+        <!-- Create movie cards -->
         <ul class="list-unstyled d-flex">
             <li v-for="movie in searchedMovies" :key="movie.id">
                 <DisplayCard
@@ -11,6 +13,8 @@
                 :overview="movie.overview"/>
             </li>
         </ul>
+
+        <!-- Create tv shows cards -->
         <ul class="list-unstyled d-flex">
             <li v-for="show in searchedTvShows" :key="show.id">
                 <DisplayCard
@@ -22,6 +26,7 @@
                 :overview="show.overview"/>
             </li>
         </ul>
+
     </div>
 </template>
 
@@ -42,18 +47,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     .language-flag {
         width: 20px;
     }
 
-    li {
-        margin: 0.2rem;
-    }
-
     ul {
         padding-bottom: 3rem;
         overflow-x: auto;
+
+        li {
+            margin: 0.2rem;
+        }
     }
+    
 </style>

@@ -23,9 +23,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+<style lang="scss" scoped>
 
     header {
         display: flex;

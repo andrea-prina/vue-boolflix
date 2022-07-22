@@ -8,11 +8,9 @@
 
 <script>
 import Header from './components/Header.vue'
-
-
+import Main from './components/Main.vue';
 
 import axios from 'axios';
-import Main from './components/Main.vue';
 
 
 export default {
@@ -37,10 +35,16 @@ export default {
       .then((result) => {
         this.movies = result.data.results;
       })
+      .catch((err) => {
+        console.warn(err);
+      })
       // Shows
       axios.get(`https://api.themoviedb.org/3/search/tv?api_key=1f3169b87aab636f5fde0cfa52d8788d&query=${query}`)
       .then((result) => {
         this.tvShows = result.data.results;
+      })
+      .catch((err) => {
+        console.warn(err);
       })
 
     },
@@ -53,6 +57,7 @@ export default {
 <style lang="scss">
 
   @import '~bootstrap/scss/bootstrap';
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
   body {
     background-color: black;

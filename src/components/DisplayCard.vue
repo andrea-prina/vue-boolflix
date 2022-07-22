@@ -1,6 +1,8 @@
 <template>
     <div class="display-card">
+
         <img class="poster-img" :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
+
         <div class="card-info">
             <h4>{{title}}</h4>
             <p><strong>Original title</strong>: {{originalTitle}}</p>
@@ -11,6 +13,7 @@
             <span><strong>Language </strong></span><img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
             <p class="pt-2"><strong>Overview</strong>: {{overview}}</p>
         </div>
+    
     </div>
 </template>
 
@@ -80,6 +83,8 @@ export default {
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            // Format for alt text and image when poster is missing
             display: inline-block;
             text-align: center;
             background-image: url('../assets/img/miss-image.png');
@@ -101,6 +106,11 @@ export default {
         }
     }
 
+    .language-flag {
+        height: 1.2rem;
+    
+    }
+
     .display-card:hover {
 
         .card-info {
@@ -111,12 +121,5 @@ export default {
             display: none;
         }
     }
-
-    .language-flag {
-        height: 1.2rem;
-
-    }
-
-
 
 </style>
