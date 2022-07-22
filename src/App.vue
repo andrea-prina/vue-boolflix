@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <SearchBar class="w-50" @search="getMoviesAndShows"/>
+    <Header @search="getMoviesAndShows"/>
     <Main :searchedMovies="movies" :searchedTvShows="tvShows"/>
 
   </div>
 </template>
 
 <script>
-import SearchBar from './components/SearchBar.vue'
+import Header from './components/Header.vue'
+
 
 
 import axios from 'axios';
@@ -17,7 +18,7 @@ import Main from './components/Main.vue';
 export default {
   name: 'App',
   components: {
-    SearchBar,
+    Header,
     Main,
   },
 
