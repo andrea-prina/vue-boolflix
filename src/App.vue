@@ -1,41 +1,24 @@
 <template>
   <div id="app">
     <SearchBar class="w-50" @search="getMoviesAndShows"/>
-    <ul class="list-unstyled" id="movies">
-      <li v-for="movie in movies" :key="movie.id">
-        <DisplayCard
-        :posterSource="movie.poster_path"
-        :title="movie.title"
-        :originalTitle="movie.original_title"
-        :originalLanguage="movie.original_language"
-        :averageVote="movie.vote_average"/>
-      </li>
-    </ul>
-    <ul class="list-unstyled" id="tv-shows">
-      <li v-for="show in tvShows" :key="show.id">
-        <DisplayCard
-        :posterSource="show.poster_path"
-        :title="show.name"
-        :originalTitle="show.original_name"
-        :originalLanguage="show.original_language"
-        :averageVote="show.vote_average"/>
-      </li>
-    </ul>
+    <Main :searchedMovies="movies" :searchedTvShows="tvShows"/>
+
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar.vue'
-import DisplayCard from './components/DisplayCard.vue'
+
 
 import axios from 'axios';
+import Main from './components/Main.vue';
 
 
 export default {
   name: 'App',
   components: {
     SearchBar,
-    DisplayCard,
+    Main,
   },
 
   data : function(){
@@ -74,20 +57,5 @@ export default {
     background-color: black;
     color: white;
   }
-
-  #movies {
-    color: yellow;
-  }
-
-  #tv-shows{
-    color: cyan;
-  }
-
-  .language-flag {
-    width: 20px;
-  }
-
-
-
 
 </style>
