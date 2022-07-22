@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>BOOLFLIX</h1>
-        <SearchBar class="w-50" @search="passQueryToParent"/>
+        <SearchBar class="w-25" @search="passQueryToParent"/>
     </header>
 </template>
 
