@@ -25,14 +25,19 @@ export default {
 
 <style lang="scss">
 
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
     header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0 1rem;
 
         h1 {
+            margin: 0;
             color: red;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4.5rem;
         }
 
     }
