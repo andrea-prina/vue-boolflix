@@ -4,8 +4,8 @@
         <h4>{{title}}</h4>
         <h5>{{originalTitle}}</h5>
         <p>
-            <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="index"></i>
-            <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="index"></i>
+            <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i> 
+            <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
         </p>
         <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
     </div>
