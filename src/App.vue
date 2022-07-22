@@ -2,21 +2,23 @@
   <div id="app">
     <SearchBar class="w-50" @search="getMoviesAndShows"/>
     <ul class="list-unstyled" id="movies">
-      <li v-for="(movie, index) in movies" :key="index">
-        <img :src="'https://image.tmdb.org/t/p/w154'+ movie.poster_path" :alt="movie.title">
-        <h4>{{movie.title}}</h4>
-        <h5>{{movie.original_title}}</h5>
-        <img class="language-flag" :src="getLanguageFlag(movie.original_language)" :alt="movie.original_language">
-        <p>{{movie.vote_average}}</p>
+      <li v-for="movie in movies" :key="movie.id">
+        <DisplayCard
+        :posterSource="movie.poster_path"
+        :title="movie.title"
+        :originalTitle="movie.original_title"
+        :originalLanguage="movie.original_language"
+        :averageVote="movie.vote_average"/>
       </li>
     </ul>
     <ul class="list-unstyled" id="tv-shows">
-      <li v-for="(show, index) in tvShows" :key="index">
-        <img :src="'https://image.tmdb.org/t/p/w154'+ show.poster_path" :alt="show.title">
-        <h4>{{show.name}}</h4>
-        <h5>{{show.original_name}}</h5>
-        <img class="language-flag" :src="getLanguageFlag(show.original_language)" :alt="show.original_language">
-        <p>{{show.vote_average}}</p>
+      <li v-for="show in tvShows" :key="show.id">
+        <DisplayCard
+        :posterSource="show.poster_path"
+        :title="show.name"
+        :originalTitle="show.original_name"
+        :originalLanguage="show.original_language"
+        :averageVote="show.vote_average"/>
       </li>
     </ul>
   </div>
@@ -24,6 +26,7 @@
 
 <script>
 import SearchBar from './components/SearchBar.vue'
+import DisplayCard from './components/DisplayCard.vue'
 
 import axios from 'axios';
 
@@ -32,6 +35,7 @@ export default {
   name: 'App',
   components: {
     SearchBar,
+    DisplayCard,
   },
 
   data : function(){
@@ -55,30 +59,6 @@ export default {
         this.tvShows = result.data.results;
       })
 
-    },
-
-
-    getLanguageFlag : function(langCode){
-
-      let flagIcon = "";
-
-      switch (langCode){
-        // TODO: Map more languages
-        case 'en' :
-          flagIcon = "gb";
-          break;
-
-        case 'it' :
-          flagIcon = "it";
-          break;
-
-        case 'ja' :
-          flagIcon = "jp";
-          break
-        
-        }
-      
-      return (`https://countryflagsapi.com/png/${flagIcon}`)
     },
 
   },
