@@ -7,7 +7,8 @@
                 :title="movie.title"
                 :originalTitle="movie.original_title"
                 :originalLanguage="movie.original_language"
-                :averageVote="movie.vote_average"/>
+                :averageVote="movie.vote_average"
+                :overview="movie.overview"/>
             </li>
         </ul>
         <ul class="list-unstyled d-flex">
@@ -17,7 +18,8 @@
                 :title="show.name"
                 :originalTitle="show.original_name"
                 :originalLanguage="show.original_language"
-                :averageVote="show.vote_average"/>
+                :averageVote="show.vote_average"
+                :overview="show.overview"/>
             </li>
         </ul>
     </div>
@@ -47,11 +49,11 @@ export default {
     }
 
     li {
-        margin: 0.5rem;
+        margin: 0.2rem;
     }
 
     ul {
-        padding: 3rem 0;
+        padding-bottom: 3rem;
         overflow-x: auto;
     }
 </style>

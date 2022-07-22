@@ -2,13 +2,14 @@
     <div class="display-card">
         <img class="poster-img" :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
         <div class="card-info">
-            <h4><strong>Title</strong>:{{title}}</h4>
-            <h5><strong>Original title</strong>:{{originalTitle}}</h5>
-            <p><strong>Rating</strong>:
+            <h4>{{title}}</h4>
+            <p><strong>Original title</strong>: {{originalTitle}}</p>
+            <p><strong>Rating</strong>: 
                 <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
                 <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
             </p>
             <span><strong>Language </strong></span><img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
+            <p class="pt-2"><strong>Overview</strong>: {{overview}}</p>
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ export default {
         originalLanguage : String,
         flagSource : String,
         averageVote : Number,
+        overview : String,
 
     },
 
@@ -87,7 +89,16 @@ export default {
     }
 
     .card-info {
+        padding: 1rem;
         display: none;
+
+        h4 {
+            font-weight: bold;
+        }
+
+        p {
+            margin: 0;
+        }
     }
 
     .display-card:hover {
@@ -103,6 +114,7 @@ export default {
 
     .language-flag {
         height: 1.2rem;
+
     }
 
 
