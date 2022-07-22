@@ -41,16 +41,13 @@ export default {
     getMoviesAndShows : function(query){
 
       if (query != "" || query === null){
-
+        
+        
         // Movies
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.movies = result.data.results;
-          if (this.movies.length > 0){
-            this.foundMovies = true;
-          } else {
-            this.foundMovies = false;
-          }
+          this.foundMovies = this.checkSearch(this.movies);
           this.newPage = false;
         })
         .catch((err) => {
@@ -60,11 +57,7 @@ export default {
         axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.tvShows = result.data.results;
-          if (this.tvShows.length > 0){
-            this.foundTvShows = true;
-          } else {
-            this.foundTvShows = false;
-          }
+          this.foundTvShows = this.checkSearch(this.tvShows);
         })
         .catch((err) => {
           console.warn(err);
@@ -73,6 +66,17 @@ export default {
       }
 
     },
+
+    checkSearch : function(searchResults){
+      let searchOutput = false
+      
+      if (searchResults.length > 0){
+        searchOutput = true;
+      }
+
+      console.log(searchOutput);
+      return searchOutput
+    }
 
   },
 

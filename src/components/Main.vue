@@ -68,7 +68,7 @@ export default {
             overflow-x: auto;
     
             li {
-                margin: 0.2rem;
+                margin-right: 0.2rem;
             }
         }
 
