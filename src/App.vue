@@ -87,10 +87,11 @@ export default {
 
   @import '~bootstrap/scss/bootstrap';
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  @import './assets/styles/variables.scss';
 
   body {
-    background-color: black;
-    color: white;
+    background-color: $backgroundColor;
+    color: $mainTextColor;
   }
 
 </style>

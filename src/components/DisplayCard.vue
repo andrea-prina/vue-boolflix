@@ -74,10 +74,12 @@ export default {
 
 <style lang="scss" scoped>
 
+    @import '../assets/styles/variables.scss';
+
     .display-card {
         width: 342px;
         height: 514px;
-        border: 0.25px solid rgb(40, 40, 40);
+        border: 0.25px solid $accentColor;
         overflow-y: auto;
 
 

@@ -25,6 +25,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @import '../assets/styles/variables.scss';
+
     header {
         display: flex;
         justify-content: space-between;
@@ -33,7 +35,7 @@ export default {
 
         h1 {
             margin: 0;
-            color: red;
+            color: $brandColor;
             font-family: 'Bebas Neue', cursive;
             font-size: 4.5rem;
         }
