@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <header>
         <h1>BOOLFLIX</h1>
         <SearchBar class="w-50" @search="passQueryToParent"/>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -23,7 +23,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+
+        h1 {
+            color: red;
+        }
+
+    }
 
 </style>

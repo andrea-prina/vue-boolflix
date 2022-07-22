@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul class="list-unstyled" id="movies">
+        <ul class="list-unstyled d-flex">
             <li v-for="movie in searchedMovies" :key="movie.id">
                 <DisplayCard
                 :posterSource="movie.poster_path"
@@ -10,7 +10,7 @@
                 :averageVote="movie.vote_average"/>
             </li>
         </ul>
-        <ul class="list-unstyled" id="tv-shows">
+        <ul class="list-unstyled d-flex">
             <li v-for="show in searchedTvShows" :key="show.id">
                 <DisplayCard
                 :posterSource="show.poster_path"
@@ -42,16 +42,15 @@ export default {
 
 <style lang="scss">
 
-    #movies {
-        color: yellow;
-    }
-
-    #tv-shows{
-        color: cyan;
-    }
-
     .language-flag {
         width: 20px;
     }
 
+    li {
+        margin: 0.5rem;
+    }
+
+    ul {
+        overflow-x: auto;
+    }
 </style>

@@ -1,13 +1,15 @@
 <template>
-    <div>
-        <img :src="'https://image.tmdb.org/t/p/w154'+ posterSource" :alt="title">
-        <h4>{{title}}</h4>
-        <h5>{{originalTitle}}</h5>
-        <p>
-            <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i> 
-            <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
-        </p>
-        <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
+    <div class="display-card">
+        <div class="poster-img"><img :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title"></div>
+        <div class="card-info">
+            <h4>{{title}}</h4>
+            <h5>{{originalTitle}}</h5>
+            <p>
+                <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
+                <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
+            </p>
+            <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
+        </div>
     </div>
 </template>
 
@@ -65,6 +67,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+    .poster-img {
+
+        width: 342px;
+        height: 514px;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
 
 </style>
