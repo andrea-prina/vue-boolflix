@@ -3,7 +3,10 @@
         <img :src="'https://image.tmdb.org/t/p/w154'+ posterSource" :alt="title">
         <h4>{{title}}</h4>
         <h5>{{originalTitle}}</h5>
-        <p>{{refactorVote(averageVote)}}</p>
+        <p>
+            <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="index"></i>
+            <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="index"></i>
+        </p>
         <img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
     </div>
 </template>
@@ -21,6 +24,12 @@ export default {
         flagSource : String,
         averageVote : Number,
 
+    },
+
+    data : function(){
+        return{
+            MAX_VOTE : 5,
+        }
     },
 
     methods : {
