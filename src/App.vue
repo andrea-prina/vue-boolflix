@@ -24,6 +24,7 @@ export default {
     return {
       movies : [],
       tvShows : [],
+      apiKey : "1f3169b87aab636f5fde0cfa52d8788d",
     }
   },
 
@@ -31,7 +32,7 @@ export default {
 
     getMoviesAndShows : function(query){
       // Movies
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=1f3169b87aab636f5fde0cfa52d8788d&query=${query}`)
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
       .then((result) => {
         this.movies = result.data.results;
       })
@@ -39,7 +40,7 @@ export default {
         console.warn(err);
       })
       // Shows
-      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=1f3169b87aab636f5fde0cfa52d8788d&query=${query}`)
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
       .then((result) => {
         this.tvShows = result.data.results;
       })
