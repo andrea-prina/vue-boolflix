@@ -78,6 +78,8 @@ export default {
         width: 342px;
         height: 514px;
         border: 0.25px solid rgb(40, 40, 40);
+        overflow-y: auto;
+
 
         .poster-img {
             width: 100%;
