@@ -51,6 +51,7 @@ export default {
     }
 
     ul {
+        padding-bottom: 3rem;
         overflow-x: auto;
     }
 </style>

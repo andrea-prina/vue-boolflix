@@ -1,6 +1,6 @@
 <template>
     <div class="display-card">
-        <div class="poster-img"><img :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title"></div>
+        <img :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
         <div class="card-info">
             <h4>{{title}}</h4>
             <h5>{{originalTitle}}</h5>
@@ -69,17 +69,33 @@ export default {
 
 <style lang="scss">
 
-    .poster-img {
-
+    .display-card {
         width: 342px;
         height: 514px;
-        
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: inline-block;
         }
     }
+
+    .card-info {
+        display: none;
+    }
+
+    .display-card:hover {
+
+        .card-info {
+            display: inline-block;
+        }
+
+        img {
+            display: none;
+        }
+    }
+
 
 
 </style>
