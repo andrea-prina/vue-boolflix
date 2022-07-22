@@ -2,13 +2,13 @@
     <div>
         <ul class="list-unstyled" id="movies">
             <li v-for="movie in searchedMovies" :key="movie.id">
-            <DisplayCard
-            :posterSource="movie.poster_path"
-            :title="movie.title"
-            :originalTitle="movie.original_title"
-            :originalLanguage="movie.original_language"
-            :averageVote="movie.vote_average"/>
-        </li>
+                <DisplayCard
+                :posterSource="movie.poster_path"
+                :title="movie.title"
+                :originalTitle="movie.original_title"
+                :originalLanguage="movie.original_language"
+                :averageVote="movie.vote_average"/>
+            </li>
         </ul>
         <ul class="list-unstyled" id="tv-shows">
             <li v-for="show in searchedTvShows" :key="show.id">
