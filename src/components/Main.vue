@@ -2,7 +2,7 @@
     <main>
 
         <!-- Create movie cards -->
-        <div v-if="checkMovies">
+        <div v-if="searchedMovies.length > 0">
             <h4>Movies</h4>
             <ul class="list-unstyled d-flex">
                 <li v-for="movie in searchedMovies" :key="movie.id">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Create tv shows cards -->
-        <div v-if="checkShows">
+        <div v-if="searchedTvShows.length > 0">
             <h4>TV Shows</h4>
             <ul class="list-unstyled d-flex">
                 <li v-for="show in searchedTvShows" :key="show.id">
@@ -33,7 +33,7 @@
             </ul>
         </div>
 
-        <h4 v-if="!checkMovies && !checkShows && !newPage">We couldn't find anything...</h4>
+        <h4 v-if="searchedMovies.length === 0 && searchedTvShows.length === 0 && !newPage">We couldn't find anything...</h4>
 
     </main>
 </template>
@@ -50,8 +50,6 @@ export default {
     props : {
         searchedMovies : Array,
         searchedTvShows : Array,
-        checkMovies : Boolean,
-        checkShows : Boolean,
         newPage : Boolean,
     }
 

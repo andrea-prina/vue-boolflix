@@ -3,9 +3,7 @@
     <Header @search="getMoviesAndShows"/>
     <Main
     :searchedMovies="movies"
-    :checkMovies="foundMovies"
     :searchedTvShows="tvShows"
-    :checkShows="foundTvShows"
     :newPage="newPage"/>
 
   </div>
@@ -29,8 +27,6 @@ export default {
     return {
       movies : [],
       tvShows : [],
-      foundMovies : false,
-      foundTvShows : false,
       newPage : true,
       apiKey : "1f3169b87aab636f5fde0cfa52d8788d",
     }
@@ -47,7 +43,6 @@ export default {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.movies = result.data.results;
-          this.foundMovies = this.checkSearch(this.movies);
           this.newPage = false;
         })
         .catch((err) => {
@@ -57,7 +52,6 @@ export default {
         axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${query}`)
         .then((result) => {
           this.tvShows = result.data.results;
-          this.foundTvShows = this.checkSearch(this.tvShows);
         })
         .catch((err) => {
           console.warn(err);
@@ -67,20 +61,9 @@ export default {
 
     },
 
-    checkSearch : function(searchResults){
-      let searchOutput = false
-      
-      if (searchResults.length > 0){
-        searchOutput = true;
-      }
-
-      console.log(searchOutput);
-      return searchOutput
-    }
-
   },
-
 }
+
 </script>
 
 <style lang="scss">
