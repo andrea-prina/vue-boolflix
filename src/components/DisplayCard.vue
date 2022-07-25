@@ -10,6 +10,11 @@
                 <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
                 <i v-for="(n, index) in (this.MAX_VOTE - refactorVote(averageVote))" class="fa-regular fa-star" :key="'B'+index"></i>
             </p>
+            <p>
+                <strong>Genres</strong>: 
+                <span>{{genres[0]}}</span>
+                <span v-for="(genre, index) in genres.slice(1)" :key="index">, {{genre}}</span>
+            </p>
             <span><strong>Language </strong></span><img class="language-flag" :src="getLanguageFlag(originalLanguage)" :alt="originalLanguage">
             <p class="pt-2"><strong>Overview</strong>: {{overview}}</p>
         </div>
@@ -30,6 +35,7 @@ export default {
         flagSource : String,
         averageVote : Number,
         overview : String,
+        genres : Array,
 
     },
 
