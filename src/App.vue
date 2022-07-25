@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @search="getMoviesAndShows"/>
+    <Header @search="searchMoviesAndShows"/>
     <Main
     :searchedMovies="movies"
     :searchedTvShows="tvShows"
@@ -42,7 +42,7 @@ export default {
 
   methods : {
 
-    getMoviesAndShows : function(query){
+    searchMoviesAndShows : function(query){
 
       if (query != "" || query === null){
         
@@ -69,9 +69,26 @@ export default {
 
     },
 
-  },
+    getTopMoviesAndShows : function(){
+      // Movies
+      axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}`)
+      .then((result) => {
+        this.movies.list = result.data.results;
+      })
+      .catch((err) => {
+        console.warn(err);
+      })
+      // Shows
+      axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${this.apiKey}`)
+      .then((result) => {
+        this.tvShows.list = result.data.results;
+      })
+      .catch((err) => {
+        console.warn(err);
+      })
+    },
 
-  created(){
+    getGenres : function(){
       axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}`)
       .then((result) => {
         this.movies.genres = result.data.genres;
@@ -81,6 +98,14 @@ export default {
       .then((result) => {
         this.tvShows.genres = result.data.genres;
       })
+
+    }
+
+  },
+
+  created(){
+    this.getTopMoviesAndShows();
+    this.getGenres();
   }
 }
 
