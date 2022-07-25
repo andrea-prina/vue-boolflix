@@ -114,7 +114,7 @@ export default {
     }
 
     .language-flag {
-        height: 1.2rem;
+        height: 1rem;
     
     }
 

@@ -94,9 +94,6 @@ export default {
         }
     }
 
-    .language-flag {
-        width: 20px;
-    }
 
     
 </style>
