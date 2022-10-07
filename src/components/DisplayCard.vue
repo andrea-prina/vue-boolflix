@@ -4,7 +4,7 @@
         <img class="poster-img" :src="'https://image.tmdb.org/t/p/w342'+ posterSource" :alt="title">
 
         <div class="card-info">
-            <h4>{{title}}</h4>
+            <h6>{{title}}</h6>
             <p v-if="title != originalTitle"><strong>Original title</strong>: {{originalTitle}}</p>
             <p><strong>Rating</strong>: 
                 <i v-for="(n, index) in refactorVote(averageVote)" class="fa-solid fa-star" :key="'A'+index"></i>
@@ -83,11 +83,10 @@ export default {
     @import '../assets/styles/variables.scss';
 
     .display-card {
-        width: 342px;
-        height: 514px;
+        width: 171px;
+        height: 257px;
         border: 0.25px solid $accentColor;
         overflow-y: auto;
-
 
         .poster-img {
             width: 100%;
@@ -104,17 +103,29 @@ export default {
         }
     }
 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .display-card::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .display-card {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
     .card-info {
         padding: 1rem;
         display: none;
 
-        p {
+        p, span {
             margin: 0;
+            font-size: 0.6rem;
         }
     }
 
     .language-flag {
-        height: 1rem;
+        height: 0.6rem;
     
     }
 

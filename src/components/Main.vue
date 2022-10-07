@@ -89,6 +89,18 @@ export default {
             }
         }
 
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ul::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        ul {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+
         h4 {
             font-weight: bold;
         }
