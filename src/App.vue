@@ -65,6 +65,8 @@ export default {
           console.warn(err);
         })
     
+      } else {
+        this.getTopMoviesAndShows();
       }
 
     },

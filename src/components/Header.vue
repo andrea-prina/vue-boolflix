@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1>BOOLFLIX</h1>
+        <h1><a href="" @search="resetQuery">BOOLFLIX</a></h1>
         <SearchBar class="w-25" @search="passQueryToParent"/>
     </header>
 </template>
@@ -17,6 +17,10 @@ export default {
     methods : {
         passQueryToParent : function(query){
             this.$emit('search', query);
+        },
+
+        resetQuery : function(){
+            this.$emit('search', '');
         }
     }
 
@@ -33,11 +37,12 @@ export default {
         align-items: center;
         padding: 0 1rem;
 
-        h1 {
+        h1 > a {
             margin: 0;
             color: $brandColor;
             font-family: 'Bebas Neue', cursive;
             font-size: 4.5rem;
+            text-decoration: none;
         }
 
     }
